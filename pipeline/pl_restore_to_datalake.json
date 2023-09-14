@@ -30,13 +30,61 @@
 					},
 					"cases": [
 						{
-							"value": "des"
+							"value": "des",
+							"activities": [
+								{
+									"name": "Set variable1",
+									"type": "SetVariable",
+									"dependsOn": [],
+									"policy": {
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"variableName": "return",
+										"value": "des job type"
+									}
+								}
+							]
 						},
 						{
-							"value": "dvms"
+							"value": "dvms",
+							"activities": [
+								{
+									"name": "Set variable2",
+									"type": "SetVariable",
+									"dependsOn": [],
+									"policy": {
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"variableName": "return",
+										"value": "dvms job type"
+									}
+								}
+							]
 						},
 						{
-							"value": "cc"
+							"value": "cc",
+							"activities": [
+								{
+									"name": "Set variable3",
+									"type": "SetVariable",
+									"dependsOn": [],
+									"policy": {
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"variableName": "return",
+										"value": "cc job type"
+									}
+								}
+							]
 						}
 					],
 					"defaultActivities": [
