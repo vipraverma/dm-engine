@@ -38,6 +38,22 @@
 						{
 							"value": "cc"
 						}
+					],
+					"defaultActivities": [
+						{
+							"name": "incorrectJobType",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "return",
+								"value": "invalidJobType"
+							}
+						}
 					]
 				}
 			}
@@ -50,6 +66,9 @@
 		},
 		"variables": {
 			"jobtype": {
+				"type": "String"
+			},
+			"return": {
 				"type": "String"
 			}
 		},
