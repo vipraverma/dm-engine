@@ -10,8 +10,35 @@
 				"typeProperties": {
 					"waitTimeInSeconds": 1
 				}
+			},
+			{
+				"name": "Switch1",
+				"type": "Switch",
+				"dependsOn": [
+					{
+						"activity": "Wait1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"cases": []
+				}
 			}
 		],
+		"parameters": {
+			"jobtype": {
+				"type": "string",
+				"defaultValue": null
+			}
+		},
+		"variables": {
+			"jobtype": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
