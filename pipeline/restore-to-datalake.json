@@ -1,5 +1,5 @@
 {
-	"name": "dvms-restore-to-datalake",
+	"name": "restore-to-datalake",
 	"properties": {
 		"activities": [
 			{
