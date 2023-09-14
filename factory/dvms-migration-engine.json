@@ -1,13 +1,5 @@
 {
 	"name": "dvms-migration-engine",
-	"properties": {
-		"globalParameters": {
-			"jobtype": {
-				"type": "string",
-				"value": null
-			}
-		}
-	},
 	"location": "usgovvirginia",
 	"identity": {
 		"type": "SystemAssigned",
