@@ -33,7 +33,7 @@
 							"value": "des",
 							"activities": [
 								{
-									"name": "Set variable1",
+									"name": "des variable1",
 									"type": "SetVariable",
 									"dependsOn": [],
 									"policy": {
@@ -52,7 +52,7 @@
 							"value": "dvms",
 							"activities": [
 								{
-									"name": "Set variable2",
+									"name": "dvms variable2",
 									"type": "SetVariable",
 									"dependsOn": [],
 									"policy": {
@@ -71,7 +71,7 @@
 							"value": "cc",
 							"activities": [
 								{
-									"name": "Set variable3",
+									"name": "cc variable3",
 									"type": "SetVariable",
 									"dependsOn": [],
 									"policy": {
