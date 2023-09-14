@@ -1,0 +1,9 @@
+{
+	"name": "dvms-migration-engine",
+	"location": "usgovvirginia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "aee1f997-dc01-4567-82db-22704db34492",
+		"tenantId": "f32b1d9f-03f9-42fb-8c64-c6963e3a67f9"
+	}
+}
