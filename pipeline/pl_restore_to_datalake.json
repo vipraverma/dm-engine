@@ -1,5 +1,5 @@
 {
-	"name": "restore-to-datalake",
+	"name": "pl_restore_to_datalake",
 	"properties": {
 		"activities": [
 			{
