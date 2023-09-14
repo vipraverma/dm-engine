@@ -24,7 +24,21 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
-					"cases": []
+					"on": {
+						"value": "@pipeline().parameters.jobtype",
+						"type": "Expression"
+					},
+					"cases": [
+						{
+							"value": "des"
+						},
+						{
+							"value": "dvms"
+						},
+						{
+							"value": "cc"
+						}
+					]
 				}
 			}
 		],
