@@ -1,0 +1,23 @@
+{
+	"name": "ds_csv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_az_blob",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "dbocobanOperatorsModified.csv",
+				"container": "vipra-dl"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
