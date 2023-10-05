@@ -38,7 +38,7 @@
 				"     deletable: false,",
 				"     insertable: true,",
 				"     updateable: false,",
-				"     upsertable: false,",
+				"     upsertable: true,",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> deltalakeSink"
 			]
