@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": "operator.parquet",
 				"folderPath": "backup",
 				"fileSystem": "vipra-dl"
 			},
