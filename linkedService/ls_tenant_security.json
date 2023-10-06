@@ -1,0 +1,12 @@
+{
+	"name": "ls_tenant_security",
+	"properties": {
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "https://dev.safefleetcloud.com:443/tenant-security/api/",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
