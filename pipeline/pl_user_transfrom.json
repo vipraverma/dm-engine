@@ -216,12 +216,31 @@
 							"supportRFC5988": "true"
 						}
 					},
+					"sink": {
+						"type": "ParquetSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "ParquetWriteSettings"
+						}
+					},
 					"enableStaging": false
 				},
 				"inputs": [
 					{
 						"referenceName": "ds_tenant_security",
 						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_gen2_parquet",
+						"type": "DatasetReference",
+						"parameters": {
+							"filename": "bridgeUsers.parquet",
+							"folder": "transform"
+						}
 					}
 				]
 			},
