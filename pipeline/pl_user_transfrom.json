@@ -235,7 +235,8 @@
 									"path": "id"
 								},
 								"sink": {
-									"name": "Id"
+									"name": "Id",
+									"type": "Guid"
 								}
 							},
 							{
@@ -243,7 +244,8 @@
 									"path": "email"
 								},
 								"sink": {
-									"name": "email"
+									"name": "email",
+									"type": "String"
 								}
 							}
 						]
