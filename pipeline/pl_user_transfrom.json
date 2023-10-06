@@ -141,30 +141,6 @@
 							},
 							{
 								"source": {
-									"name": "officerID",
-									"type": "String",
-									"physicalType": "UTF8"
-								},
-								"sink": {
-									"name": "officerID",
-									"type": "String",
-									"physicalType": "UTF8"
-								}
-							},
-							{
-								"source": {
-									"name": "OperatorID",
-									"type": "String",
-									"physicalType": "UTF8"
-								},
-								"sink": {
-									"name": "OperatorID",
-									"type": "String",
-									"physicalType": "UTF8"
-								}
-							},
-							{
-								"source": {
 									"name": "email",
 									"type": "String",
 									"physicalType": "UTF8"
