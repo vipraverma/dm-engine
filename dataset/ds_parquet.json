@@ -13,7 +13,7 @@
 				"folderPath": "backup",
 				"container": "vipra-dl"
 			},
-			"compressionCodec": "none"
+			"compressionCodec": "snappy"
 		},
 		"schema": [
 			{
