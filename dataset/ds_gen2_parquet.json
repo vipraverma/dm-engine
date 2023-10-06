@@ -1,0 +1,18 @@
+{
+	"name": "ds_gen2_parquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_azStorageGen2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
