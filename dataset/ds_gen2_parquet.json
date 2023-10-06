@@ -24,7 +24,10 @@
 					"value": "@dataset().filename",
 					"type": "Expression"
 				},
-				"folderPath": "backup",
+				"folderPath": {
+					"value": "@dataset().folder",
+					"type": "Expression"
+				},
 				"fileSystem": "vipra-dl"
 			},
 			"compressionCodec": "snappy"
