@@ -9,6 +9,10 @@
 			"filename": {
 				"type": "string",
 				"defaultValue": "operator.parquet"
+			},
+			"folder": {
+				"type": "string",
+				"defaultValue": "backup"
 			}
 		},
 		"annotations": [],
