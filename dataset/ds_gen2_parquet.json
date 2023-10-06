@@ -5,6 +5,12 @@
 			"referenceName": "ls_azStorageGen2",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"filename": {
+				"type": "string",
+				"defaultValue": "operator.parquet"
+			}
+		},
 		"annotations": [],
 		"type": "Parquet",
 		"typeProperties": {
