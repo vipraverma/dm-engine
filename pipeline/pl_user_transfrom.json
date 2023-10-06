@@ -248,7 +248,8 @@
 									"type": "String"
 								}
 							}
-						]
+						],
+						"collectionReference": "$['content']"
 					}
 				},
 				"inputs": [
