@@ -235,7 +235,7 @@
 									"path": "id"
 								},
 								"sink": {
-									"name": "Id",
+									"name": "tenantSecurityId",
 									"type": "Guid"
 								}
 							},
@@ -244,12 +244,22 @@
 									"path": "email"
 								},
 								"sink": {
-									"name": "email",
+									"name": "tenantSecurityEmail",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "firstName"
+								},
+								"sink": {
+									"name": "firstName",
 									"type": "String"
 								}
 							}
 						],
-						"collectionReference": "$['content']"
+						"collectionReference": "$['content']",
+						"mapComplexValuesToString": true
 					}
 				},
 				"inputs": [
