@@ -232,7 +232,7 @@
 						"mappings": [
 							{
 								"source": {
-									"path": "$['content'][0]['id']"
+									"path": "id"
 								},
 								"sink": {
 									"name": "Id"
@@ -240,7 +240,7 @@
 							},
 							{
 								"source": {
-									"path": "$['content'][0]['email']"
+									"path": "email"
 								},
 								"sink": {
 									"name": "email"
