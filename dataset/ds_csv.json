@@ -10,7 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "dbocobanOperatorsModified1.csv",
+				"fileName": "dbocobanOperators.csv",
+				"folderPath": "backup",
 				"container": "vipra-dl"
 			},
 			"columnDelimiter": ",",
