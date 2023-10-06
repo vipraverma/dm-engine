@@ -97,7 +97,8 @@
 						"referenceName": "ds_gen2_parquet",
 						"type": "DatasetReference",
 						"parameters": {
-							"filename": "operator.parquet"
+							"filename": "operator.parquet",
+							"folder": "backup"
 						}
 					}
 				]
