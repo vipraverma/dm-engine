@@ -1,5 +1,5 @@
 {
-	"name": "ds_tenant_security_users",
+	"name": "ds_tenant_security",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_tenant_security",
