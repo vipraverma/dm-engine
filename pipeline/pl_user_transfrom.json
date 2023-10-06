@@ -45,7 +45,7 @@
 					"sink": {
 						"type": "ParquetSink",
 						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings",
+							"type": "AzureBlobFSWriteSettings",
 							"copyBehavior": "FlattenHierarchy"
 						},
 						"formatSettings": {
@@ -70,7 +70,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "ds_parquet",
+						"referenceName": "ds_gen2_parquet",
 						"type": "DatasetReference"
 					}
 				]
