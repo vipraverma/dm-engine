@@ -95,7 +95,10 @@
 				"inputs": [
 					{
 						"referenceName": "ds_gen2_parquet",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"filename": "operator.parquet"
+						}
 					}
 				]
 			}
