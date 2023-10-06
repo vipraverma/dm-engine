@@ -225,7 +225,28 @@
 							"type": "ParquetWriteSettings"
 						}
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['content'][0]['id']"
+								},
+								"sink": {
+									"name": "Id"
+								}
+							},
+							{
+								"source": {
+									"path": "$['content'][0]['email']"
+								},
+								"sink": {
+									"name": "email"
+								}
+							}
+						]
+					}
 				},
 				"inputs": [
 					{
