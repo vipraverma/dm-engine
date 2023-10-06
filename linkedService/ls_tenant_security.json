@@ -4,7 +4,7 @@
 		"annotations": [],
 		"type": "RestService",
 		"typeProperties": {
-			"url": "https://dev.safefleetcloud.com:443/tenant-security/api/users",
+			"url": "https://dev.safefleetcloud.com:443/tenant-security/api/",
 			"enableServerCertificateValidation": true,
 			"authenticationType": "Anonymous"
 		}
