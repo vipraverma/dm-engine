@@ -278,7 +278,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"filename": "tenantSecurityUsers.parquet",
-							"folder": "nexus"
+							"folder": "nexus/users"
 						}
 					}
 				]
