@@ -5,6 +5,10 @@
 		"typeProperties": {
 			"sources": [
 				{
+					"dataset": {
+						"referenceName": "ds_gen2_parquet",
+						"type": "DatasetReference"
+					},
 					"name": "transformSource"
 				},
 				{
@@ -23,10 +27,15 @@
 				"     nexusSourceColumn as string",
 				"}",
 				"source(allowSchemaDrift: true,",
-				"     validateSchema: false) ~> transformSource",
+				"     validateSchema: false,",
+				"     limit: 100,",
+				"     ignoreNoFilesFound: false,",
+				"     rowUrlColumn: 'sourcefilepath',",
+				"     format: 'parquet') ~> transformSource",
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
+				"     rowUrlColumn: 'sourceFilePath',",
 				"     format: 'parquet') ~> nexusSources"
 			]
 		}
