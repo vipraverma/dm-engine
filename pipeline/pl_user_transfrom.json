@@ -277,7 +277,7 @@
 						"referenceName": "ds_gen2_parquet",
 						"type": "DatasetReference",
 						"parameters": {
-							"filename": "bridgeUsers.parquet",
+							"filename": "nexusTenantSecurityUsers.parquet",
 							"folder": "transform"
 						}
 					}
