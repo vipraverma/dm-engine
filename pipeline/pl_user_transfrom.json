@@ -321,133 +321,36 @@
 				}
 			},
 			{
-				"name": "Copy_existingUsers_copy1",
-				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "createUsersinNexus",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
+				"name": "DataflowcreateBridgefile",
+				"type": "Wait",
+				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
-					"source": {
-						"type": "RestSource",
-						"httpRequestTimeout": "00:01:40",
-						"requestInterval": "00.00:00:00.010",
-						"requestMethod": "GET",
-						"additionalHeaders": {
-							"Authorization": {
-								"value": "@variables('access_token')",
-								"type": "Expression"
-							},
-							"X-Tenant-Id": "vipcs"
-						},
-						"paginationRules": {
-							"supportRFC5988": "true"
-						}
-					},
-					"sink": {
-						"type": "ParquetSink",
-						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings",
-							"copyBehavior": "FlattenHierarchy"
-						},
-						"formatSettings": {
-							"type": "ParquetWriteSettings"
-						}
-					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"mappings": [
-							{
-								"source": {
-									"path": "id"
-								},
-								"sink": {
-									"name": "tenantSecurityId",
-									"type": "Guid"
-								}
-							},
-							{
-								"source": {
-									"path": "email"
-								},
-								"sink": {
-									"name": "tenantSecurityEmail",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"path": "firstName"
-								},
-								"sink": {
-									"name": "firstName",
-									"type": "String"
-								}
-							}
-						],
-						"collectionReference": "$['content']",
-						"mapComplexValuesToString": true
-					}
-				},
-				"inputs": [
-					{
-						"referenceName": "ds_tenant_security",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "ds_gen2_parquet",
-						"type": "DatasetReference",
-						"parameters": {
-							"filename": "bridgeUsers.parquet",
-							"folder": "transform"
-						}
-					}
-				]
-			},
-			{
-				"name": "createUsersinNexus",
-				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "DataFlow",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"enableStaging": false
+					"waitTimeInSeconds": 1
 				}
 			},
 			{
-				"name": "DataflowcreateBridgefile",
+				"name": "DataFlow_tocreatebridgefile",
 				"type": "Wait",
 				"dependsOn": [
 					{
-						"activity": "Copy_existingUsers_copy1",
+						"activity": "copyActivityTocreateUsers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"waitTimeInSeconds": 1
+				}
+			},
+			{
+				"name": "copyActivityTocreateUsers",
+				"type": "Wait",
+				"dependsOn": [
+					{
+						"activity": "DataFlow",
 						"dependencyConditions": [
 							"Succeeded"
 						]
