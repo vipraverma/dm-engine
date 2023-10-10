@@ -1,0 +1,34 @@
+{
+	"name": "df_",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"name": "transformSource"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_gen2_parquet",
+						"type": "DatasetReference"
+					},
+					"name": "nexusSources"
+				}
+			],
+			"sinks": [],
+			"transformations": [],
+			"scriptLines": [
+				"parameters{",
+				"     transformSourceColumn as string,",
+				"     nexusSourceColumn as string",
+				"}",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false) ~> transformSource",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'parquet') ~> nexusSources"
+			]
+		}
+	}
+}
