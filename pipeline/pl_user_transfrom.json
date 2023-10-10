@@ -58,7 +58,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"filename": "operator.parquet",
-							"folder": "backup"
+							"folder": "backup/dbocobanOperators"
 						}
 					}
 				]
