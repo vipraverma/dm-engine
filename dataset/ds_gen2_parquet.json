@@ -12,7 +12,7 @@
 			},
 			"folder": {
 				"type": "string",
-				"defaultValue": "backup"
+				"defaultValue": "backup/dbocobanOperators"
 			}
 		},
 		"annotations": [],
