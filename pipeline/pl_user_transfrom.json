@@ -277,8 +277,8 @@
 						"referenceName": "ds_gen2_parquet",
 						"type": "DatasetReference",
 						"parameters": {
-							"filename": "nexusTenantSecurityUsers.parquet",
-							"folder": "transform"
+							"filename": "tenantSecurityUsers.parquet",
+							"folder": "nexus"
 						}
 					}
 				]
