@@ -214,7 +214,7 @@
 								"value": "@variables('access_token')",
 								"type": "Expression"
 							},
-							"X-Tenant-Id": "vipcs"
+							"X-Tenant-Id": "dvmspoc"
 						},
 						"paginationRules": {
 							"supportRFC5988": "true"
