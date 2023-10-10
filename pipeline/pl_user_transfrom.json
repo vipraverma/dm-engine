@@ -179,7 +179,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"filename": "transformUser.parquet",
-							"folder": "transform"
+							"folder": "transform/Users"
 						}
 					}
 				]
