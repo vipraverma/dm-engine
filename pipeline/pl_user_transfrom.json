@@ -343,7 +343,7 @@
 				"type": "Wait",
 				"dependsOn": [
 					{
-						"activity": "df_tofindUserstobeAdded",
+						"activity": "df_userstobeAdded",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -355,7 +355,7 @@
 				}
 			},
 			{
-				"name": "df_tofindUserstobeAdded",
+				"name": "df_userstobeAdded",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
