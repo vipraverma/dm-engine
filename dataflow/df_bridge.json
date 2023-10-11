@@ -25,13 +25,12 @@
 					"name": "union1"
 				},
 				{
-					"name": "aggregate1"
+					"name": "findDistinctUser"
 				}
 			],
 			"scriptLines": [
 				"parameters{",
-				"     filterNexusEntity as string,",
-				"     filterTransformEntity as string",
+				"     groupByParameter as string",
 				"}",
 				"source(output(",
 				"          userId as string,",
@@ -64,7 +63,7 @@
 				"     ignoreNoFilesFound: false,",
 				"     format: 'parquet') ~> transformSource",
 				"nexusSource, transformSource union(byName: true)~> union1",
-				"union1 aggregate() ~> aggregate1"
+				"union1 aggregate(groupBy(nexusEntity = $groupByParameter)) ~> findDistinctUser"
 			]
 		}
 	}
