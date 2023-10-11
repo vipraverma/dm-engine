@@ -389,13 +389,10 @@
 						}
 					},
 					"compute": {
-						"coreCount": 8,
-						"computeType": "General"
+						"coreCount": 32,
+						"computeType": "MemoryOptimized"
 					},
-					"traceLevel": "None",
-					"cacheSinks": {
-						"firstRowOnly": false
-					}
+					"traceLevel": "Coarse"
 				}
 			}
 		],
