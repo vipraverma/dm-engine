@@ -71,7 +71,7 @@
 				"     skipDuplicateMapOutputs: true,",
 				"     store: 'cache',",
 				"     format: 'inline',",
-				"     output: true,",
+				"     output: false,",
 				"     saveOrder: 1) ~> sink1"
 			]
 		}
