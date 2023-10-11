@@ -63,7 +63,8 @@
 				"     ignoreNoFilesFound: false,",
 				"     format: 'parquet') ~> transformSource",
 				"nexusSource, transformSource union(byName: true)~> union1",
-				"union1 aggregate(groupBy({$groupByParameter} = $groupByParameter)) ~> findDistinctUser"
+				"union1 aggregate(groupBy({$groupByParameter} = $groupByParameter),",
+				"     each(match(name != $groupByParameter), $$ = first($$))) ~> findDistinctUser"
 			]
 		}
 	}
