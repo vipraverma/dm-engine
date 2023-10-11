@@ -25,7 +25,7 @@
 					"name": "union1"
 				},
 				{
-					"name": "aggregate1"
+					"name": "removeExisting"
 				}
 			],
 			"scriptLines": [
@@ -63,7 +63,7 @@
 				"     rowUrlColumn: 'sourceFilePath',",
 				"     format: 'parquet') ~> nexusSources",
 				"transformSource, nexusSources union(byName: true)~> union1",
-				"union1 aggregate() ~> aggregate1"
+				"union1 aggregate(groupBy(email)) ~> removeExisting"
 			]
 		}
 	}
