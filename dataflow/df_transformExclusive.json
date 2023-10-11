@@ -68,7 +68,7 @@
 				"     format: 'parquet') ~> nexusSources",
 				"transformSource, nexusSources union(byName: true)~> union1",
 				"union1 aggregate(groupBy(email),",
-				"     each(match(name != 'email'), $$ = first($$))) ~> removeExisting",
+				"     each(match(name!='email'), $$ = first($$))) ~> removeExisting",
 				"removeExisting sink(validateSchema: false,",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
