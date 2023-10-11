@@ -16,7 +16,7 @@
 						"referenceName": "ds_gen2_parquet",
 						"type": "DatasetReference"
 					},
-					"name": "transfromSource"
+					"name": "transformSource"
 				}
 			],
 			"sinks": [],
@@ -30,7 +30,8 @@
 			],
 			"scriptLines": [
 				"parameters{",
-				"     filterEntity as string",
+				"     filterNexusEntity as string,",
+				"     filterTransformEntity as string",
 				"}",
 				"source(output(",
 				"          userId as string,",
@@ -61,8 +62,8 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
-				"     format: 'parquet') ~> transfromSource",
-				"nexusSource, transfromSource union(byName: true)~> union1",
+				"     format: 'parquet') ~> transformSource",
+				"nexusSource, transformSource union(byName: true)~> union1",
 				"union1 aggregate() ~> aggregate1"
 			]
 		}
