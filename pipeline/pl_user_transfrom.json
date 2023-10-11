@@ -236,28 +236,37 @@
 						"mappings": [
 							{
 								"source": {
-									"path": "id"
+									"path": "['id']"
 								},
 								"sink": {
-									"name": "tenantSecurityId",
+									"name": "Id",
 									"type": "Guid"
 								}
 							},
 							{
 								"source": {
-									"path": "email"
+									"path": "['email']"
 								},
 								"sink": {
-									"name": "tenantSecurityEmail",
+									"name": "email",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"path": "firstName"
+									"path": "['firstname']"
 								},
 								"sink": {
-									"name": "firstName",
+									"name": "firstname",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['lastname']"
+								},
+								"sink": {
+									"name": "lastname",
 									"type": "String"
 								}
 							}

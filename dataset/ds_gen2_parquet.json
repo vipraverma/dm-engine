@@ -32,6 +32,43 @@
 			},
 			"compressionCodec": "snappy"
 		},
-		"schema": []
+		"schema": [
+			{
+				"name": "userId",
+				"type": "UTF8"
+			},
+			{
+				"name": "firstname",
+				"type": "UTF8"
+			},
+			{
+				"name": "lastname",
+				"type": "UTF8"
+			},
+			{
+				"name": "fullname",
+				"type": "UTF8"
+			},
+			{
+				"name": "password",
+				"type": "UTF8"
+			},
+			{
+				"name": "officerTitle",
+				"type": "UTF8"
+			},
+			{
+				"name": "officerID",
+				"type": "UTF8"
+			},
+			{
+				"name": "OperatorID",
+				"type": "UTF8"
+			},
+			{
+				"name": "email",
+				"type": "UTF8"
+			}
+		]
 	}
 }
