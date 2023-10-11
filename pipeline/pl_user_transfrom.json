@@ -314,15 +314,6 @@
 				}
 			},
 			{
-				"name": "DataflowcreateBridgefile",
-				"type": "Wait",
-				"dependsOn": [],
-				"userProperties": [],
-				"typeProperties": {
-					"waitTimeInSeconds": 1
-				}
-			},
-			{
 				"name": "DataFlow_tocreatebridgefile",
 				"type": "Wait",
 				"dependsOn": [
