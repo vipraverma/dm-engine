@@ -501,6 +501,9 @@
 					"dataflow": {
 						"referenceName": "df_bridge",
 						"type": "DataFlowReference",
+						"parameters": {
+							"groupByParameter": "email"
+						},
 						"datasetParameters": {
 							"nexusSource": {
 								"filename": "tenantSecurityUsers.parquet",
