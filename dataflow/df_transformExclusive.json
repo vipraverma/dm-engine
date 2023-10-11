@@ -19,17 +19,13 @@
 					"name": "nexusSources"
 				}
 			],
-			"sinks": [
-				{
-					"name": "sinkUsers"
-				}
-			],
+			"sinks": [],
 			"transformations": [
 				{
 					"name": "union1"
 				},
 				{
-					"name": "removeExisting"
+					"name": "removeDuplicate"
 				}
 			],
 			"scriptLines": [
@@ -67,14 +63,8 @@
 				"     rowUrlColumn: 'sourcefilepath',",
 				"     format: 'parquet') ~> nexusSources",
 				"transformSource, nexusSources union(byName: true)~> union1",
-				"union1 aggregate(groupBy(email)) ~> removeExisting",
-				"removeExisting sink(validateSchema: false,",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true,",
-				"     store: 'cache',",
-				"     format: 'inline',",
-				"     output: true,",
-				"     saveOrder: 1) ~> sinkUsers"
+				"union1 aggregate(groupBy(email),",
+				"     each(match(name != 'email'), first($$) = ERROR_FUNCTION(''))) ~> removeDuplicate"
 			]
 		}
 	}
