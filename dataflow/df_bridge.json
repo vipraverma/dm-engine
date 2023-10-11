@@ -30,9 +30,6 @@
 				},
 				{
 					"name": "findDistinctUser"
-				},
-				{
-					"name": "select1"
 				}
 			],
 			"scriptLines": [
@@ -72,20 +69,7 @@
 				"nexusSource, transformSource union(byName: true)~> union1",
 				"union1 aggregate(groupBy(groupByParam = $groupByParameter),",
 				"     each(match(name != 'email'), $$ = first($$))) ~> findDistinctUser",
-				"findDistinctUser select(mapColumn(",
-				"          groupByParam,",
-				"          userId,",
-				"          firstname,",
-				"          lastname,",
-				"          fullname,",
-				"          password,",
-				"          officerTitle,",
-				"          officerID,",
-				"          OperatorID",
-				"     ),",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1",
-				"select1 sink(validateSchema: false,",
+				"findDistinctUser sink(validateSchema: false,",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     store: 'cache',",
