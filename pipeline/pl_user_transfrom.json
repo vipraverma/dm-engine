@@ -503,12 +503,12 @@
 						"type": "DataFlowReference",
 						"datasetParameters": {
 							"nexusSource": {
-								"filename": "operator.parquet",
-								"folder": "backup/dbocobanOperators"
+								"filename": "tenantSecurityUsers.parquet",
+								"folder": "nexus/users"
 							},
 							"transformSource": {
-								"filename": "operator.parquet",
-								"folder": "backup/dbocobanOperators"
+								"filename": "transformUser.parquet",
+								"folder": "transfrom/users"
 							}
 						}
 					},
