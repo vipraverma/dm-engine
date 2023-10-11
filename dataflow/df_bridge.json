@@ -61,7 +61,7 @@
 				"     format: 'parquet') ~> transformSource",
 				"nexusSource, transformSource union(byName: true)~> union1",
 				"union1 aggregate(groupBy(groupByParam = $groupByParameter),",
-				"     each(match(name != 'email'), $$ = first($$))) ~> findDistinctUser",
+				"     each(match(name != '$groupByParameter'), $$ = first($$))) ~> findDistinctUser",
 				"findDistinctUser filter(!isNull(Id)) ~> filterNotNull",
 				"filterNotNull sink(validateSchema: false,",
 				"     skipDuplicateMapInputs: true,",
