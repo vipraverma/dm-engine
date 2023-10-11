@@ -60,7 +60,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
-				"     rowUrlColumn: 'sourcefilePath',",
+				"     rowUrlColumn: 'sourcefilepath',",
 				"     format: 'parquet') ~> nexusSources",
 				"transformSource, nexusSources union(byName: true)~> union1",
 				"union1 aggregate(groupBy(email),",
