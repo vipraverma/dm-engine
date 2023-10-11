@@ -19,7 +19,11 @@
 					"name": "nexusSources"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "existsUsers"
@@ -61,7 +65,14 @@
 				"     format: 'parquet') ~> nexusSources",
 				"transformSource, nexusSources exists(transformSource@email == nexusSources@email,",
 				"     negate:true,",
-				"     broadcast: 'auto')~> existsUsers"
+				"     broadcast: 'auto')~> existsUsers",
+				"existsUsers sink(validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     store: 'cache',",
+				"     format: 'inline',",
+				"     output: true,",
+				"     saveOrder: 1) ~> sink1"
 			]
 		}
 	}
