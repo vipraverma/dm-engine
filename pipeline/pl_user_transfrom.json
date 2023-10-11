@@ -365,12 +365,12 @@
 						"type": "DataFlowReference",
 						"datasetParameters": {
 							"transformSource": {
-								"filename": "operator.parquet",
-								"folder": "backup/dbocobanOperators"
+								"filename": "transformUser.parquet",
+								"folder": "transfrom/users"
 							},
 							"nexusSources": {
-								"filename": "operator.parquet",
-								"folder": "backup/dbocobanOperators"
+								"filename": "tenantSecurityUsers.parquet",
+								"folder": "nexus/users"
 							}
 						}
 					},
