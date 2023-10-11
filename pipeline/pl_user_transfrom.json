@@ -394,7 +394,7 @@
 					},
 					"traceLevel": "None",
 					"cacheSinks": {
-						"firstRowOnly": true
+						"firstRowOnly": false
 					}
 				}
 			}
