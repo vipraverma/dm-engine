@@ -19,7 +19,11 @@
 					"name": "transformSource"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "union1"
@@ -64,7 +68,14 @@
 				"     format: 'parquet') ~> transformSource",
 				"nexusSource, transformSource union(byName: true)~> union1",
 				"union1 aggregate(groupBy({$groupByParameter} = $groupByParameter),",
-				"     each(match(name != $groupByParameter), $$ = first($$))) ~> findDistinctUser"
+				"     each(match(name != $groupByParameter), $$ = first($$))) ~> findDistinctUser",
+				"findDistinctUser sink(validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     store: 'cache',",
+				"     format: 'inline',",
+				"     output: true,",
+				"     saveOrder: 1) ~> sink1"
 			]
 		}
 	}
