@@ -23,21 +23,47 @@
 			"transformations": [
 				{
 					"name": "union1"
+				},
+				{
+					"name": "aggregate1"
 				}
 			],
 			"scriptLines": [
-				"source(allowSchemaDrift: true,",
+				"source(output(",
+				"          userId as string,",
+				"          firstname as string,",
+				"          lastname as string,",
+				"          fullname as string,",
+				"          password as string,",
+				"          officerTitle as string,",
+				"          officerID as string,",
+				"          OperatorID as string,",
+				"          email as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     limit: 100,",
 				"     ignoreNoFilesFound: false,",
 				"     rowUrlColumn: 'sourcefilepath',",
 				"     format: 'parquet') ~> transformSource",
-				"source(allowSchemaDrift: true,",
+				"source(output(",
+				"          userId as string,",
+				"          firstname as string,",
+				"          lastname as string,",
+				"          fullname as string,",
+				"          password as string,",
+				"          officerTitle as string,",
+				"          officerID as string,",
+				"          OperatorID as string,",
+				"          email as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
 				"     rowUrlColumn: 'sourceFilePath',",
 				"     format: 'parquet') ~> nexusSources",
-				"transformSource, nexusSources union(byName: true)~> union1"
+				"transformSource, nexusSources union(byName: true)~> union1",
+				"union1 aggregate() ~> aggregate1"
 			]
 		}
 	}
