@@ -22,10 +22,7 @@
 			"sinks": [],
 			"transformations": [
 				{
-					"name": "union1"
-				},
-				{
-					"name": "getDistinctUsers"
+					"name": "existsUsers"
 				}
 			],
 			"scriptLines": [
@@ -62,9 +59,9 @@
 				"     ignoreNoFilesFound: false,",
 				"     rowUrlColumn: 'sourcefilepath',",
 				"     format: 'parquet') ~> nexusSources",
-				"transformSource, nexusSources union(byName: true)~> union1",
-				"union1 aggregate(groupBy(email),",
-				"     each(match(name != 'email'), $$ = first($$))) ~> getDistinctUsers"
+				"transformSource, nexusSources exists(transformSource@email == nexusSources@email,",
+				"     negate:true,",
+				"     broadcast: 'auto')~> existsUsers"
 			]
 		}
 	}
