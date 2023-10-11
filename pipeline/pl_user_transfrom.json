@@ -314,22 +314,6 @@
 				}
 			},
 			{
-				"name": "DataFlow_tocreatebridgefile",
-				"type": "Wait",
-				"dependsOn": [
-					{
-						"activity": "Copy_existingUsers_copy1",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"waitTimeInSeconds": 1
-				}
-			},
-			{
 				"name": "copyActivityTocreateUsers",
 				"type": "Wait",
 				"dependsOn": [
@@ -493,6 +477,47 @@
 						}
 					}
 				]
+			},
+			{
+				"name": "df_toupdateBridgeUser",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "Copy_existingUsers_copy1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "df_bridge",
+						"type": "DataFlowReference",
+						"datasetParameters": {
+							"nexusSource": {
+								"filename": "operator.parquet",
+								"folder": "backup/dbocobanOperators"
+							},
+							"transformSource": {
+								"filename": "operator.parquet",
+								"folder": "backup/dbocobanOperators"
+							}
+						}
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
 			}
 		],
 		"variables": {
