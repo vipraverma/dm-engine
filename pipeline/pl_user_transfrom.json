@@ -380,7 +380,7 @@
 						"datasetParameters": {
 							"transformSource": {
 								"filename": "transformUser.parquet",
-								"folder": "transfrom/users"
+								"folder": "transform/users"
 							},
 							"nexusSources": {
 								"filename": "tenantSecurityUsers.parquet",
