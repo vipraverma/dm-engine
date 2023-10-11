@@ -60,10 +60,11 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
-				"     rowUrlColumn: 'sourceFilePath',",
+				"     rowUrlColumn: 'sourcefilePath',",
 				"     format: 'parquet') ~> nexusSources",
 				"transformSource, nexusSources union(byName: true)~> union1",
-				"union1 aggregate(groupBy(email)) ~> removeExisting"
+				"union1 aggregate(groupBy(email),",
+				"     each(match(name != 'email'), $$ = first($$))) ~> removeExisting"
 			]
 		}
 	}
