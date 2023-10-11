@@ -23,6 +23,9 @@
 			"transformations": [
 				{
 					"name": "union1"
+				},
+				{
+					"name": "getDistinctUsers"
 				}
 			],
 			"scriptLines": [
@@ -59,7 +62,9 @@
 				"     ignoreNoFilesFound: false,",
 				"     rowUrlColumn: 'sourcefilepath',",
 				"     format: 'parquet') ~> nexusSources",
-				"transformSource, nexusSources union(byName: true)~> union1"
+				"transformSource, nexusSources union(byName: true)~> union1",
+				"union1 aggregate(groupBy(email),",
+				"     each(match(name != 'email'), $$ = first($$))) ~> getDistinctUsers"
 			]
 		}
 	}
