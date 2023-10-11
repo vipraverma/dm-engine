@@ -3,11 +3,67 @@
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
-			"sources": [],
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_gen2_parquet",
+						"type": "DatasetReference"
+					},
+					"name": "nexusSource"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_gen2_parquet",
+						"type": "DatasetReference"
+					},
+					"name": "transfromSource"
+				}
+			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "union1"
+				},
+				{
+					"name": "aggregate1"
+				}
+			],
 			"scriptLines": [
-				""
+				"parameters{",
+				"     filterEntity as string",
+				"}",
+				"source(output(",
+				"          userId as string,",
+				"          firstname as string,",
+				"          lastname as string,",
+				"          fullname as string,",
+				"          password as string,",
+				"          officerTitle as string,",
+				"          officerID as string,",
+				"          OperatorID as string,",
+				"          email as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'parquet') ~> nexusSource",
+				"source(output(",
+				"          userId as string,",
+				"          firstname as string,",
+				"          lastname as string,",
+				"          fullname as string,",
+				"          password as string,",
+				"          officerTitle as string,",
+				"          officerID as string,",
+				"          OperatorID as string,",
+				"          email as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'parquet') ~> transfromSource",
+				"nexusSource, transfromSource union(byName: true)~> union1",
+				"union1 aggregate() ~> aggregate1"
 			]
 		}
 	}
