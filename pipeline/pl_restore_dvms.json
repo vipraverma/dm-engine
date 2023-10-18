@@ -19,63 +19,6 @@
 				"typeProperties": {
 					"waitTimeInSeconds": 1
 				}
-			},
-			{
-				"name": "Wait1",
-				"type": "Wait",
-				"dependsOn": [
-					{
-						"activity": "restoreDVMStoDatalake",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					},
-					{
-						"activity": "restore_dvms_withPartition_data_lake",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"waitTimeInSeconds": 1
-				}
-			},
-			{
-				"name": "executePipelineTOcreateUserTransfrom",
-				"type": "ExecutePipeline",
-				"dependsOn": [
-					{
-						"activity": "Wait1",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"typeProperties": {
-					"pipeline": {
-						"referenceName": "pl_transform_dvms_users",
-						"type": "PipelineReference"
-					},
-					"waitOnCompletion": true
-				}
-			},
-			{
-				"name": "ExecuteToCreateUsersNexus",
-				"type": "ExecutePipeline",
-				"dependsOn": [
-					{
-						"activity": "executePipelineTOcreateUserTransfrom",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"waitOnCompletion": true
-				}
 			}
 		],
 		"folder": {
