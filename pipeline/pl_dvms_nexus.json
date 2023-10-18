@@ -1,0 +1,20 @@
+{
+	"name": "pl_dvms_nexus",
+	"properties": {
+		"activities": [
+			{
+				"name": "Wait1",
+				"type": "Wait",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"waitTimeInSeconds": 1
+				}
+			}
+		],
+		"folder": {
+			"name": "master_dvms"
+		},
+		"annotations": []
+	}
+}
