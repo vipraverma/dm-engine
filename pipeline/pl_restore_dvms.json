@@ -3,7 +3,16 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Wait1",
+				"name": "restoreDVMStoDatalake",
+				"type": "Wait",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"waitTimeInSeconds": 1
+				}
+			},
+			{
+				"name": "restore_dvms_withPartition_data_lake",
 				"type": "Wait",
 				"dependsOn": [],
 				"userProperties": [],
