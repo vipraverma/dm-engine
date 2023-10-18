@@ -1,5 +1,5 @@
 {
-	"name": "pl_restore_partition",
+	"name": "pl_restore_dvms_partition",
 	"properties": {
 		"activities": [
 			{
