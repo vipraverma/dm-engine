@@ -1,0 +1,9 @@
+{
+	"name": "pl_restore_dvms",
+	"properties": {
+		"folder": {
+			"name": "dvms"
+		},
+		"annotations": []
+	}
+}
