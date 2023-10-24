@@ -1,0 +1,16 @@
+{
+	"name": "ls_sql_dvms",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": "integrated security=False;data source=.;initial catalog=cobanBO;user id=dvmsuser",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI5ZjUzZWJiMi0zMDQxLTQ4ZmMtODc1Yi00NzQxYjU0NjM0NDAiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "common-self-hosted-ir",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
