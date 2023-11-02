@@ -19,6 +19,7 @@
 					"value": "@dataset().filename",
 					"type": "Expression"
 				},
+				"folderPath": "nexus/units",
 				"container": "vipra-dl"
 			},
 			"columnDelimiter": ",",
