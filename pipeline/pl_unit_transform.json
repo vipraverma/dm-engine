@@ -109,7 +109,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ds_tenant_security",
+						"referenceName": "ds_tenant_settings",
 						"type": "DatasetReference"
 					}
 				],
