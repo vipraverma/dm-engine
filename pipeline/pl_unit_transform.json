@@ -70,15 +70,16 @@
 						"mappings": [
 							{
 								"source": {
-									"path": "['id']"
+									"path": "$['content'][0]['id']"
 								},
 								"sink": {
-									"name": "id"
+									"name": "id",
+									"type": "Guid"
 								}
 							},
 							{
 								"source": {
-									"path": "['name']"
+									"path": "$['content'][0]['name']"
 								},
 								"sink": {
 									"name": "name"
@@ -86,7 +87,7 @@
 							},
 							{
 								"source": {
-									"path": "['typeId']"
+									"path": "$['content'][0]['typeId']"
 								},
 								"sink": {
 									"name": "typeId"
@@ -94,7 +95,7 @@
 							},
 							{
 								"source": {
-									"path": "['typeName']"
+									"path": "$['content'][0]['typeName']"
 								},
 								"sink": {
 									"name": "typeName"
@@ -102,7 +103,7 @@
 							},
 							{
 								"source": {
-									"path": "['active']"
+									"path": "$['content'][0]['active']"
 								},
 								"sink": {
 									"name": "active"
@@ -110,31 +111,7 @@
 							},
 							{
 								"source": {
-									"path": "['userId']"
-								},
-								"sink": {
-									"name": "userId"
-								}
-							},
-							{
-								"source": {
-									"path": "['userName']"
-								},
-								"sink": {
-									"name": "userName"
-								}
-							},
-							{
-								"source": {
-									"path": "['devices'][0]"
-								},
-								"sink": {
-									"name": "items"
-								}
-							},
-							{
-								"source": {
-									"path": "['unitGroupName']"
+									"path": "$['content'][0]['unitGroupName']"
 								},
 								"sink": {
 									"name": "unitGroupName"
@@ -142,7 +119,7 @@
 							},
 							{
 								"source": {
-									"path": "['unitGroupId']"
+									"path": "$['content'][0]['unitGroupId']"
 								},
 								"sink": {
 									"name": "unitGroupId"
@@ -150,31 +127,15 @@
 							},
 							{
 								"source": {
-									"path": "$['actualPage']"
+									"path": "['deviceId']"
 								},
 								"sink": {
-									"name": "actualPage"
-								}
-							},
-							{
-								"source": {
-									"path": "$['totalPages']"
-								},
-								"sink": {
-									"name": "totalPages"
-								}
-							},
-							{
-								"source": {
-									"path": "$['totalCount']"
-								},
-								"sink": {
-									"name": "totalCount"
+									"name": "items"
 								}
 							}
 						],
-						"collectionReference": "$['content']",
-						"mapComplexValuesToString": false
+						"collectionReference": "$['devices']",
+						"mapComplexValuesToString": true
 					}
 				},
 				"inputs": [
