@@ -118,7 +118,10 @@
 				"outputs": [
 					{
 						"referenceName": "ds_gen2_csv",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"filename": "units"
+						}
 					}
 				]
 			}
