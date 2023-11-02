@@ -5,11 +5,20 @@
 			"referenceName": "ls_az_blob",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"filename": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().filename",
+					"type": "Expression"
+				},
 				"container": "vipra-dl"
 			},
 			"columnDelimiter": ",",
@@ -17,43 +26,6 @@
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
-		"schema": [
-			{
-				"name": "userId",
-				"type": "String"
-			},
-			{
-				"name": "firstname",
-				"type": "String"
-			},
-			{
-				"name": "lastname",
-				"type": "String"
-			},
-			{
-				"name": "fullname",
-				"type": "String"
-			},
-			{
-				"name": "password",
-				"type": "String"
-			},
-			{
-				"name": "officerTitle",
-				"type": "String"
-			},
-			{
-				"name": "officerID",
-				"type": "String"
-			},
-			{
-				"name": "OperatorID",
-				"type": "String"
-			},
-			{
-				"name": "email",
-				"type": "String"
-			}
-		]
+		"schema": []
 	}
 }
