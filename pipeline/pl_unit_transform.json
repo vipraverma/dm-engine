@@ -70,7 +70,7 @@
 						"mappings": [
 							{
 								"source": {
-									"path": "$['content'][0]['id']"
+									"path": "['id']"
 								},
 								"sink": {
 									"name": "id",
@@ -79,62 +79,60 @@
 							},
 							{
 								"source": {
-									"path": "$['content'][0]['name']"
+									"path": "['name']"
 								},
 								"sink": {
-									"name": "name"
+									"name": "name",
+									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"path": "$['content'][0]['typeId']"
+									"path": "['typeId']"
 								},
 								"sink": {
-									"name": "typeId"
+									"name": "typeId",
+									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"path": "$['content'][0]['typeName']"
+									"path": "['typeName']"
 								},
 								"sink": {
-									"name": "typeName"
+									"name": "typeName",
+									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"path": "$['content'][0]['active']"
+									"path": "['unitGroupName']"
 								},
 								"sink": {
-									"name": "active"
+									"name": "unitGroupName",
+									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"path": "$['content'][0]['unitGroupName']"
+									"path": "['unitGroupId']"
 								},
 								"sink": {
-									"name": "unitGroupName"
+									"name": "unitGroupId",
+									"type": "Guid"
 								}
 							},
 							{
 								"source": {
-									"path": "$['content'][0]['unitGroupId']"
+									"path": "['devices'][0]"
 								},
 								"sink": {
-									"name": "unitGroupId"
-								}
-							},
-							{
-								"source": {
-									"path": "['deviceId']"
-								},
-								"sink": {
-									"name": "items"
+									"name": "items",
+									"type": "String"
 								}
 							}
 						],
-						"collectionReference": "$['devices']",
+						"collectionReference": "$['content']",
 						"mapComplexValuesToString": true
 					}
 				},
