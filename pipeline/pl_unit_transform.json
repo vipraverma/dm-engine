@@ -13,7 +13,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "access_token",
-					"value": "Bearer EEC3B8C43AE69239C36977B5ED43C28D189AB96A0CFB47A927334416C3B9D72F-1"
+					"value": "Bearer CEB6CB24FD20CD8FDE47FF33820E2367D803B51ABF38F250641753B7C752B6B3-1"
 				}
 			},
 			{
@@ -53,13 +53,15 @@
 						}
 					},
 					"sink": {
-						"type": "ParquetSink",
+						"type": "DelimitedTextSink",
 						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings",
+							"type": "AzureBlobStorageWriteSettings",
 							"copyBehavior": "FlattenHierarchy"
 						},
 						"formatSettings": {
-							"type": "ParquetWriteSettings"
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".csv"
 						}
 					},
 					"enableStaging": false,
@@ -77,28 +79,28 @@
 							},
 							{
 								"source": {
-									"path": "['email']"
+									"path": "['name']"
 								},
 								"sink": {
-									"name": "email",
+									"name": "name",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"path": "['firstname']"
+									"path": "['typeName']"
 								},
 								"sink": {
-									"name": "firstname",
+									"name": "typeName",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"path": "['lastname']"
+									"path": "['devices']"
 								},
 								"sink": {
-									"name": "lastname",
+									"name": "device",
 									"type": "String"
 								}
 							}
@@ -115,12 +117,8 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "ds_gen2_parquet",
-						"type": "DatasetReference",
-						"parameters": {
-							"filename": "tenantsettingsunits.parquet",
-							"folder": "nexus/units"
-						}
+						"referenceName": "ds_gen2_csv",
+						"type": "DatasetReference"
 					}
 				]
 			}
