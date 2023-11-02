@@ -73,8 +73,7 @@
 									"path": "['id']"
 								},
 								"sink": {
-									"name": "Id",
-									"type": "Guid"
+									"name": "id"
 								}
 							},
 							{
@@ -82,8 +81,15 @@
 									"path": "['name']"
 								},
 								"sink": {
-									"name": "name",
-									"type": "String"
+									"name": "name"
+								}
+							},
+							{
+								"source": {
+									"path": "['typeId']"
+								},
+								"sink": {
+									"name": "typeId"
 								}
 							},
 							{
@@ -91,22 +97,84 @@
 									"path": "['typeName']"
 								},
 								"sink": {
-									"name": "typeName",
-									"type": "String"
+									"name": "typeName"
 								}
 							},
 							{
 								"source": {
-									"path": "['devices']"
+									"path": "['active']"
 								},
 								"sink": {
-									"name": "device",
-									"type": "String"
+									"name": "active"
+								}
+							},
+							{
+								"source": {
+									"path": "['userId']"
+								},
+								"sink": {
+									"name": "userId"
+								}
+							},
+							{
+								"source": {
+									"path": "['userName']"
+								},
+								"sink": {
+									"name": "userName"
+								}
+							},
+							{
+								"source": {
+									"path": "['devices'][0]"
+								},
+								"sink": {
+									"name": "items"
+								}
+							},
+							{
+								"source": {
+									"path": "['unitGroupName']"
+								},
+								"sink": {
+									"name": "unitGroupName"
+								}
+							},
+							{
+								"source": {
+									"path": "['unitGroupId']"
+								},
+								"sink": {
+									"name": "unitGroupId"
+								}
+							},
+							{
+								"source": {
+									"path": "$['actualPage']"
+								},
+								"sink": {
+									"name": "actualPage"
+								}
+							},
+							{
+								"source": {
+									"path": "$['totalPages']"
+								},
+								"sink": {
+									"name": "totalPages"
+								}
+							},
+							{
+								"source": {
+									"path": "$['totalCount']"
+								},
+								"sink": {
+									"name": "totalCount"
 								}
 							}
 						],
 						"collectionReference": "$['content']",
-						"mapComplexValuesToString": true
+						"mapComplexValuesToString": false
 					}
 				},
 				"inputs": [
