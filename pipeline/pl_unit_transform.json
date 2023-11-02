@@ -70,46 +70,37 @@
 						"mappings": [
 							{
 								"source": {
-									"path": "['id']"
+									"path": "['deviceId']"
 								},
 								"sink": {
-									"name": "id",
-									"type": "Guid"
-								}
-							},
-							{
-								"source": {
-									"path": "['name']"
-								},
-								"sink": {
-									"name": "name",
+									"name": "deviceId",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"path": "['typeId']"
+									"path": "['unit']"
 								},
 								"sink": {
-									"name": "typeId",
+									"name": "unit",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"path": "['typeName']"
+									"path": "['unitId']"
 								},
 								"sink": {
-									"name": "typeName",
+									"name": "unitId",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"path": "['unitGroupName']"
+									"path": "['unitGroup']"
 								},
 								"sink": {
-									"name": "unitGroupName",
+									"name": "unitGroup",
 									"type": "String"
 								}
 							},
@@ -119,15 +110,6 @@
 								},
 								"sink": {
 									"name": "unitGroupId",
-									"type": "Guid"
-								}
-							},
-							{
-								"source": {
-									"path": "['devices']"
-								},
-								"sink": {
-									"name": "items",
 									"type": "String"
 								}
 							}
@@ -147,7 +129,7 @@
 						"referenceName": "ds_gen2_csv",
 						"type": "DatasetReference",
 						"parameters": {
-							"filename": "units"
+							"filename": "devices"
 						}
 					}
 				]
