@@ -124,7 +124,7 @@
 							},
 							{
 								"source": {
-									"path": "['devices'][0]"
+									"path": "['devices']"
 								},
 								"sink": {
 									"name": "items",
