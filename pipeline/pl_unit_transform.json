@@ -118,8 +118,8 @@
 						"referenceName": "ds_gen2_parquet",
 						"type": "DatasetReference",
 						"parameters": {
-							"filename": "tenantSecurityUsers.parquet",
-							"folder": "nexus/users"
+							"filename": "tenantsettingsunits.parquet",
+							"folder": "nexus/units"
 						}
 					}
 				]
