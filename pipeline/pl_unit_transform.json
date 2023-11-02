@@ -15,6 +15,114 @@
 					"variableName": "access_token",
 					"value": "Bearer EEC3B8C43AE69239C36977B5ED43C28D189AB96A0CFB47A927334416C3B9D72F-1"
 				}
+			},
+			{
+				"name": "Copy_existingUnits",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "access_token",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:01:40",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"additionalHeaders": {
+							"Authorization": {
+								"value": "@variables('access_token')",
+								"type": "Expression"
+							},
+							"X-Tenant-Id": "dvmspoc"
+						},
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "ParquetSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings",
+							"copyBehavior": "FlattenHierarchy"
+						},
+						"formatSettings": {
+							"type": "ParquetWriteSettings"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "['id']"
+								},
+								"sink": {
+									"name": "Id",
+									"type": "Guid"
+								}
+							},
+							{
+								"source": {
+									"path": "['email']"
+								},
+								"sink": {
+									"name": "email",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['firstname']"
+								},
+								"sink": {
+									"name": "firstname",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['lastname']"
+								},
+								"sink": {
+									"name": "lastname",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": "$['content']",
+						"mapComplexValuesToString": true
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_tenant_security",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_gen2_parquet",
+						"type": "DatasetReference",
+						"parameters": {
+							"filename": "tenantSecurityUsers.parquet",
+							"folder": "nexus/users"
+						}
+					}
+				]
 			}
 		],
 		"variables": {

@@ -1,0 +1,15 @@
+{
+	"name": "ds_tenant_settings",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_tenant_security",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"typeProperties": {
+			"relativeUrl": "users"
+		},
+		"schema": []
+	}
+}
