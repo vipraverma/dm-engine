@@ -94,24 +94,6 @@
 									"name": "unitId",
 									"type": "String"
 								}
-							},
-							{
-								"source": {
-									"path": "['unitGroup']"
-								},
-								"sink": {
-									"name": "unitGroup",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"path": "['unitGroupId']"
-								},
-								"sink": {
-									"name": "unitGroupId",
-									"type": "String"
-								}
 							}
 						],
 						"collectionReference": "$['content']",
