@@ -2,7 +2,7 @@
 	"name": "dvms-migration-engine",
 	"properties": {
 		"globalParameters": {
-			"iterations": {
+			"file_iterations": {
 				"type": "int",
 				"value": 3
 			}
