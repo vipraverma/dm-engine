@@ -1,6 +1,31 @@
 {
 	"name": "pl_until_check",
 	"properties": {
+		"activities": [
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "iterations",
+					"value": {
+						"value": "@pipeline().globalParameters.iterations",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"iterations": {
+				"type": "Integer",
+				"defaultValue": 1
+			}
+		},
 		"annotations": []
 	}
 }
