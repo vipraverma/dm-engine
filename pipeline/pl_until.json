@@ -9,9 +9,25 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "false",
+						"value": "@bool('false')",
 						"type": "Expression"
 					},
+					"activities": [
+						{
+							"name": "Set variable1",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "testuntil",
+								"value": "9999999"
+							}
+						}
+					],
 					"timeout": "0.00:00:20"
 				}
 			},
@@ -32,6 +48,12 @@
 				}
 			}
 		],
+		"variables": {
+			"testuntil": {
+				"type": "String",
+				"defaultValue": "100"
+			}
+		},
 		"annotations": []
 	}
 }
