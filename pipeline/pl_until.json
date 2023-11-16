@@ -1,0 +1,21 @@
+{
+	"name": "pl_until",
+	"properties": {
+		"activities": [
+			{
+				"name": "Until1",
+				"type": "Until",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "false",
+						"type": "Expression"
+					},
+					"timeout": "0.00:00:20"
+				}
+			}
+		],
+		"annotations": []
+	}
+}
