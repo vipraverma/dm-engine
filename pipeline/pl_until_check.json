@@ -54,8 +54,11 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "rowcount",
-					"value": ""
+					"variableName": "iterations",
+					"value": {
+						"value": "@range(1,add(div(int(variables('rowcount')),5),4))",
+						"type": "Expression"
+					}
 				}
 			},
 			{
