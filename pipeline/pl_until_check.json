@@ -3,28 +3,11 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Set variable1",
-				"type": "SetVariable",
-				"dependsOn": [],
-				"policy": {
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"variableName": "iterations",
-					"value": {
-						"value": "@pipeline().globalParameters.iterations",
-						"type": "Expression"
-					}
-				}
-			},
-			{
 				"name": "ForEach1",
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Set variable1",
+						"activity": "Set iterations",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -53,12 +36,53 @@
 						}
 					]
 				}
+			},
+			{
+				"name": "Set iterations",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "set rowCount",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "rowcount",
+					"value": ""
+				}
+			},
+			{
+				"name": "set rowCount",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "rowcount",
+					"value": {
+						"value": "@pipeline().globalParameters.file_iterations",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"variables": {
-			"iterations": {
+			"rowcount": {
 				"type": "Integer",
 				"defaultValue": 1
+			},
+			"iterations": {
+				"type": "Array"
 			}
 		},
 		"annotations": []
