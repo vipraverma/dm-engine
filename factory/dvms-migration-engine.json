@@ -1,5 +1,13 @@
 {
 	"name": "dvms-migration-engine",
+	"properties": {
+		"globalParameters": {
+			"iterations": {
+				"type": "int",
+				"value": 3
+			}
+		}
+	},
 	"location": "usgovvirginia",
 	"identity": {
 		"type": "SystemAssigned",
