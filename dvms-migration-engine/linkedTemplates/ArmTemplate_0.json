@@ -232,7 +232,7 @@
 						"typeProperties": {
 							"variableName": "iterations",
 							"value": {
-								"value": "@range(1,add(div(int(variables('rowcount')),5),4))",
+								"value": "@range(1,variables('rowcount'))",
 								"type": "Expression"
 							}
 						}
