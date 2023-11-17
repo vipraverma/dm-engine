@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "dvms-migration-engine"
+		},
+		"ls_azStorageGen2_accountKey": {
+			"value": ""
+		},
+		"ls_az_blob_connectionString": {
+			"value": ""
+		},
+		"ls_sql_dvms_connectionString": {
+			"value": ""
+		},
+		"ls_azStorageGen2_properties_typeProperties_url": {
+			"value": "https://dvmstransformdatalake.dfs.core.usgovcloudapi.net/"
+		},
+		"ls_tenant_security_properties_typeProperties_url": {
+			"value": "https://dev.safefleetcloud.com:443/tenant-security/api/"
+		},
+		"ls_tenant_settings_properties_typeProperties_url": {
+			"value": "https://dev.safefleetcloud.us:443/tenant-settings/api/"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

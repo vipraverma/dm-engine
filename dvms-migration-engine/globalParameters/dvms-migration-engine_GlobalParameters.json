@@ -1,0 +1,6 @@
+{
+	"file_iterations": {
+		"type": "int",
+		"value": 10
+	}
+}
