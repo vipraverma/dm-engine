@@ -4,7 +4,7 @@
 		"globalParameters": {
 			"file_iterations": {
 				"type": "int",
-				"value": 5
+				"value": 10
 			}
 		}
 	},
