@@ -1,0 +1,74 @@
+{
+	"name": "ds_gen2_parquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_azStorageGen2",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"filename": {
+				"type": "string",
+				"defaultValue": "operator.parquet"
+			},
+			"folder": {
+				"type": "string",
+				"defaultValue": "backup/dbocobanOperators"
+			}
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().filename",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().folder",
+					"type": "Expression"
+				},
+				"fileSystem": "vipra-dl"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "userId",
+				"type": "UTF8"
+			},
+			{
+				"name": "firstname",
+				"type": "UTF8"
+			},
+			{
+				"name": "lastname",
+				"type": "UTF8"
+			},
+			{
+				"name": "fullname",
+				"type": "UTF8"
+			},
+			{
+				"name": "password",
+				"type": "UTF8"
+			},
+			{
+				"name": "officerTitle",
+				"type": "UTF8"
+			},
+			{
+				"name": "officerID",
+				"type": "UTF8"
+			},
+			{
+				"name": "OperatorID",
+				"type": "UTF8"
+			},
+			{
+				"name": "email",
+				"type": "UTF8"
+			}
+		]
+	}
+}

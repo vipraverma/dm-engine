@@ -1,0 +1,76 @@
+{
+	"name": "df_bridge",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_gen2_parquet",
+						"type": "DatasetReference"
+					},
+					"name": "nexusSource"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_gen2_parquet",
+						"type": "DatasetReference"
+					},
+					"name": "transformSource"
+				}
+			],
+			"sinks": [
+				{
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "union1"
+				},
+				{
+					"name": "findDistinctUser"
+				},
+				{
+					"name": "filterNotNull"
+				}
+			],
+			"scriptLines": [
+				"parameters{",
+				"     groupByParameter as string",
+				"}",
+				"source(output(",
+				"          Id as string,",
+				"          email as string,",
+				"          firstname as string,",
+				"          lastname as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'parquet') ~> nexusSource",
+				"source(output(",
+				"          sourceId as string,",
+				"          firstname as string,",
+				"          lastname as string,",
+				"          email as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'parquet') ~> transformSource",
+				"nexusSource, transformSource union(byName: true)~> union1",
+				"union1 aggregate(groupBy(groupByParam = $groupByParameter),",
+				"     each(match(name != '$groupByParameter'), $$ = first($$))) ~> findDistinctUser",
+				"findDistinctUser filter(!isNull(Id)) ~> filterNotNull",
+				"filterNotNull sink(validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     store: 'cache',",
+				"     format: 'inline',",
+				"     output: true,",
+				"     saveOrder: 1) ~> sink1"
+			]
+		}
+	}
+}

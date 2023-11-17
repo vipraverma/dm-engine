@@ -1,0 +1,58 @@
+{
+	"name": "dfwritetodelta",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_csv",
+						"type": "DatasetReference"
+					},
+					"name": "csvSource"
+				}
+			],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "ls_az_blob",
+						"type": "LinkedServiceReference"
+					},
+					"name": "deltalakeSink"
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          userId as string,",
+				"          firstname as string,",
+				"          lastname as string,",
+				"          fullname as string,",
+				"          password as string,",
+				"          officerTitle as string,",
+				"          officerID as string,",
+				"          OperatorID as string,",
+				"          email as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> csvSource",
+				"csvSource sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     container: 'vipra-dl',",
+				"     overwrite: true,",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: false,",
+				"     vacuum: 0,",
+				"     deletable: false,",
+				"     insertable: true,",
+				"     updateable: false,",
+				"     upsertable: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> deltalakeSink"
+			]
+		}
+	}
+}

@@ -1,0 +1,79 @@
+{
+	"name": "df_users_tobeAdded",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_gen2_parquet",
+						"type": "DatasetReference"
+					},
+					"name": "transformSource"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_gen2_parquet",
+						"type": "DatasetReference"
+					},
+					"name": "nexusSources"
+				}
+			],
+			"sinks": [
+				{
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "existsUsers"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          userId as string,",
+				"          firstname as string,",
+				"          lastname as string,",
+				"          fullname as string,",
+				"          password as string,",
+				"          officerTitle as string,",
+				"          officerID as string,",
+				"          OperatorID as string,",
+				"          email as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     limit: 100,",
+				"     ignoreNoFilesFound: false,",
+				"     rowUrlColumn: 'sourcefilepath',",
+				"     format: 'parquet') ~> transformSource",
+				"source(output(",
+				"          userId as string,",
+				"          firstname as string,",
+				"          lastname as string,",
+				"          fullname as string,",
+				"          password as string,",
+				"          officerTitle as string,",
+				"          officerID as string,",
+				"          OperatorID as string,",
+				"          email as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     rowUrlColumn: 'sourcefilepath',",
+				"     format: 'parquet') ~> nexusSources",
+				"transformSource, nexusSources exists(transformSource@email == nexusSources@email,",
+				"     negate:true,",
+				"     broadcast: 'auto')~> existsUsers",
+				"existsUsers sink(validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     store: 'cache',",
+				"     format: 'inline',",
+				"     output: false,",
+				"     saveOrder: 1) ~> sink1"
+			]
+		}
+	}
+}

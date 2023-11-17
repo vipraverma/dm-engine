@@ -1,0 +1,130 @@
+{
+	"name": "pl_unit_transform",
+	"properties": {
+		"activities": [
+			{
+				"name": "access_token",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "access_token",
+					"value": "Bearer CEB6CB24FD20CD8FDE47FF33820E2367D803B51ABF38F250641753B7C752B6B3-1"
+				}
+			},
+			{
+				"name": "Copy_existingUnits",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "access_token",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:01:40",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"additionalHeaders": {
+							"Authorization": {
+								"value": "@variables('access_token')",
+								"type": "Expression"
+							},
+							"X-Tenant-Id": "dvmspoc"
+						},
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "FlattenHierarchy"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".csv"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "['deviceId']"
+								},
+								"sink": {
+									"name": "deviceId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['unit']"
+								},
+								"sink": {
+									"name": "unit",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['unitId']"
+								},
+								"sink": {
+									"name": "unitId",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": "$['content']",
+						"mapComplexValuesToString": true
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_tenant_settings",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_gen2_csv",
+						"type": "DatasetReference",
+						"parameters": {
+							"filename": "devices"
+						}
+					}
+				]
+			}
+		],
+		"variables": {
+			"access_token": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "dvms"
+		},
+		"annotations": []
+	}
+}

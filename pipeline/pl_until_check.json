@@ -1,0 +1,93 @@
+{
+	"name": "pl_until_check",
+	"properties": {
+		"activities": [
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Set iterations",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@variables('iterations')",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Execute Pipeline1",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "pl_until",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Set iterations",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "set rowCount",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "iterations",
+					"value": {
+						"value": "@range(1,add(div(int(variables('rowcount')),5),4))",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "set rowCount",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "rowcount",
+					"value": {
+						"value": "@pipeline().globalParameters.file_iterations",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"rowcount": {
+				"type": "Integer",
+				"defaultValue": 1
+			},
+			"iterations": {
+				"type": "Array"
+			}
+		},
+		"annotations": []
+	}
+}
