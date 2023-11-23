@@ -10,10 +10,24 @@
 						"type": "DatasetReference"
 					},
 					"name": "caseSource"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_casemapprevious",
+						"type": "DatasetReference"
+					},
+					"name": "previousCaseSource"
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "hashColumnName"
+				},
+				{
+					"name": "hashColumnPrevious"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          caseID as string,",
@@ -28,7 +42,23 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> caseSource"
+				"     ignoreNoFilesFound: false) ~> caseSource",
+				"source(output(",
+				"          caseID as string,",
+				"          caseDesc as string,",
+				"          isActive as string,",
+				"          isRestrictedAccess as string,",
+				"          openDate as string,",
+				"          eventType as string,",
+				"          userIDCreator as string,",
+				"          note as string,",
+				"          hoduntil as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> previousCaseSource",
+				"caseSource derive(hashCaseId = sha2(256,caseID)) ~> hashColumnName",
+				"previousCaseSource derive(hasCaseIdPRev = sha2(256,caseID)) ~> hashColumnPrevious"
 			]
 		}
 	}

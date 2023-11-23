@@ -1,0 +1,61 @@
+{
+	"name": "ds_casemapprevious",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_azStorageGen2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "dbocobancasesMap.csv",
+				"folderPath": "previous",
+				"fileSystem": "vipra-dl"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "caseID",
+				"type": "String"
+			},
+			{
+				"name": "caseDesc",
+				"type": "String"
+			},
+			{
+				"name": "isActive",
+				"type": "String"
+			},
+			{
+				"name": "isRestrictedAccess",
+				"type": "String"
+			},
+			{
+				"name": "openDate",
+				"type": "String"
+			},
+			{
+				"name": "eventType",
+				"type": "String"
+			},
+			{
+				"name": "userIDCreator",
+				"type": "String"
+			},
+			{
+				"name": "note",
+				"type": "String"
+			},
+			{
+				"name": "hoduntil",
+				"type": "String"
+			}
+		]
+	}
+}
