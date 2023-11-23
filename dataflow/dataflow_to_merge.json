@@ -1,0 +1,35 @@
+{
+	"name": "dataflow_to_merge",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_cases",
+						"type": "DatasetReference"
+					},
+					"name": "caseSource"
+				}
+			],
+			"sinks": [],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          caseID as string,",
+				"          caseDesc as string,",
+				"          isActive as string,",
+				"          isRestrictedAccess as string,",
+				"          openDate as string,",
+				"          eventType as string,",
+				"          userIDCreator as string,",
+				"          note as string,",
+				"          hoduntil as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> caseSource"
+			]
+		}
+	}
+}
