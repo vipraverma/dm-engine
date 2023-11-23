@@ -19,13 +19,20 @@
 					"name": "previousCaseSource"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "hashColumnName"
 				},
 				{
 					"name": "hashColumnPrevious"
+				},
+				{
+					"name": "exists1"
 				}
 			],
 			"scriptLines": [
@@ -58,7 +65,17 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> previousCaseSource",
 				"caseSource derive(hashCaseId = sha2(256,caseID)) ~> hashColumnName",
-				"previousCaseSource derive(hasCaseIdPRev = sha2(256,caseID)) ~> hashColumnPrevious"
+				"previousCaseSource derive(hasCaseIdPRev = sha2(256,caseID)) ~> hashColumnPrevious",
+				"hashColumnName, hashColumnPrevious exists(hashCaseId == hasCaseIdPRev,",
+				"     negate:true,",
+				"     broadcast: 'auto')~> exists1",
+				"exists1 sink(validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     store: 'cache',",
+				"     format: 'inline',",
+				"     output: false,",
+				"     saveOrder: 1) ~> sink1"
 			]
 		}
 	}
