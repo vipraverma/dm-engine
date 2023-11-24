@@ -9,7 +9,7 @@
 						"referenceName": "ds_cases",
 						"type": "DatasetReference"
 					},
-					"name": "caseSource"
+					"name": "nextcaseSource"
 				},
 				{
 					"dataset": {
@@ -42,7 +42,7 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> caseSource",
+				"     ignoreNoFilesFound: false) ~> nextcaseSource",
 				"source(output(",
 				"          caseID as string,",
 				"          caseDesc as string,",
@@ -57,7 +57,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> previousCaseSource",
-				"caseSource, previousCaseSource union(byName: true)~> unionCases",
+				"nextcaseSource, previousCaseSource union(byName: true)~> unionCases",
 				"unionCases aggregate(groupBy(caseID),",
 				"     each(match(name != 'caseID'), $$ = first($$))) ~> removeDuplicate"
 			]
