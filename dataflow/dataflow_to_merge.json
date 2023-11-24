@@ -59,7 +59,7 @@
 				"     ignoreNoFilesFound: false) ~> previousCaseSource",
 				"caseSource, previousCaseSource union(byName: true)~> unionCases",
 				"unionCases aggregate(groupBy(caseID),",
-				"     each(match(name != 'caseID'), $$ = $$)) ~> removeDuplicate"
+				"     each(match(name != 'caseID'), $$ = first($$))) ~> removeDuplicate"
 			]
 		}
 	}
