@@ -81,6 +81,7 @@
 				"          note as string,",
 				"          hoduntil as string",
 				"     ),",
+				"     partitionFileNames:['dbocobancasesMap.csv'],",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
