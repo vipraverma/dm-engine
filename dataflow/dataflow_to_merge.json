@@ -19,7 +19,15 @@
 					"name": "previousCaseSource"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "dsCaseMap",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "unionCases"
@@ -59,7 +67,25 @@
 				"     ignoreNoFilesFound: false) ~> previousCaseSource",
 				"nextcaseSource, previousCaseSource union(byName: true)~> unionCases",
 				"unionCases aggregate(groupBy(caseID),",
-				"     each(match(name != 'caseID'), $$ = first($$))) ~> removeDuplicate"
+				"     each(match(name != 'caseID'), $$ = first($$))) ~> removeDuplicate",
+				"removeDuplicate sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          caseID as string,",
+				"          caseDesc as string,",
+				"          isActive as string,",
+				"          isRestrictedAccess as string,",
+				"          openDate as string,",
+				"          eventType as string,",
+				"          userIDCreator as string,",
+				"          note as string,",
+				"          hoduntil as string",
+				"     ),",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
