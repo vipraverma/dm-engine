@@ -19,24 +19,13 @@
 					"name": "previousCaseSource"
 				}
 			],
-			"sinks": [
-				{
-					"dataset": {
-						"referenceName": "dsCaseMap",
-						"type": "DatasetReference"
-					},
-					"name": "sink1"
-				}
-			],
+			"sinks": [],
 			"transformations": [
 				{
-					"name": "hashColumnName"
+					"name": "unionCases"
 				},
 				{
-					"name": "hashColumnPrevious"
-				},
-				{
-					"name": "exists1"
+					"name": "removeDuplicate"
 				}
 			],
 			"scriptLines": [
@@ -68,32 +57,9 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> previousCaseSource",
-				"caseSource derive(hashCaseId = sha2(256,caseID)) ~> hashColumnName",
-				"previousCaseSource derive(hasCaseIdPRev = sha2(256,caseID)) ~> hashColumnPrevious",
-				"hashColumnName, hashColumnPrevious exists(hashCaseId == hasCaseIdPRev,",
-				"     negate:true,",
-				"     broadcast: 'auto')~> exists1",
-				"exists1 sink(allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     input(",
-				"          caseID as string,",
-				"          caseDesc as string,",
-				"          isActive as string,",
-				"          isRestrictedAccess as string,",
-				"          openDate as string,",
-				"          eventType as string,",
-				"          userIDCreator as string,",
-				"          note as string,",
-				"          hoduntil as string",
-				"     ),",
-				"     partitionFileNames:['dbocobancasesMap.csv'],",
-				"     umask: 0022,",
-				"     preCommands: [],",
-				"     postCommands: [],",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true,",
-				"     saveOrder: 1,",
-				"     partitionBy('hash', 1)) ~> sink1"
+				"caseSource, previousCaseSource union(byName: true)~> unionCases",
+				"unionCases aggregate(groupBy(caseID),",
+				"     each(match(name != 'caseID'), $$ = $$)) ~> removeDuplicate"
 			]
 		}
 	}
