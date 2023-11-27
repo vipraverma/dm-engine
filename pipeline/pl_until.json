@@ -75,10 +75,97 @@
 						"type": "RestSink",
 						"httpRequestTimeout": "00:05:00",
 						"requestInterval": 10,
+						"requestMethod": "POST",
 						"writeBatchSize": 10000,
 						"httpCompressionType": "none"
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "userId",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['userId']"
+								}
+							},
+							{
+								"source": {
+									"name": "firstname",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['firstname']"
+								}
+							},
+							{
+								"source": {
+									"name": "lastname",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['lastname']"
+								}
+							},
+							{
+								"source": {
+									"name": "fullname",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['fullname']"
+								}
+							},
+							{
+								"source": {
+									"name": "password",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['password']"
+								}
+							},
+							{
+								"source": {
+									"name": "officerTitle",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['officerTitle']"
+								}
+							},
+							{
+								"source": {
+									"name": "officerID",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['officerID']"
+								}
+							},
+							{
+								"source": {
+									"name": "OperatorID",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['OperatorID']"
+								}
+							},
+							{
+								"source": {
+									"name": "email",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['email']"
+								}
+							}
+						]
+					}
 				},
 				"inputs": [
 					{
