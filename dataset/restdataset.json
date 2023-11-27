@@ -1,0 +1,12 @@
+{
+	"name": "restdataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_tenant_security",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"schema": []
+	}
+}
