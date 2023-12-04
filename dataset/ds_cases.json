@@ -11,7 +11,7 @@
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"fileName": "dbocobancases.csv",
-				"folderPath": "dvms",
+				"folderPath": "dvms1",
 				"container": "vipra-backup"
 			},
 			"columnDelimiter": ",",
